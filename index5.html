@@ -1,0 +1,2091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astrala - Numerology & Life Path Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --cream: #fef9f3;
+            --gold: #c9b458;
+            --dark-gold: #a68e36;
+            --gray-dark: #333333;
+            --gray-medium: #666666;
+            --gray-light: #999999;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-dark);
+            background-color: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            line-height: 1.3;
+            color: var(--gray-dark);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+    /* =========================
+   ROOT VARIABLES
+========================= */
+:root {
+    --white: #ffffff;
+    --gray-dark: #2b2b2b;
+    --gray-medium: #666666;
+    --gold: #c9a24d;
+    --transition: all 0.3s ease;
+    --shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    background-color: var(--gray-dark);
+    color: var(--white);
+    border: none;
+    border-radius: 50px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.btn:hover {
+    background-color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+}
+
+.btn-outline:hover {
+    background-color: var(--gold);
+    color: var(--white);
+}
+
+/* =========================
+   NAVBAR
+========================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--white);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+    padding: 20px 0;
+    transition: var(--transition);
+    overflow: visible;
+}
+
+.navbar.scrolled {
+    padding: 15px 0;
+}
+
+/* =========================
+   GRID LAYOUT
+========================= */
+.navbar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+}
+
+/* =========================
+   NAV GROUPS
+========================= */
+.nav-left,
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    white-space: nowrap;
+}
+
+.nav-left {
+    justify-self: start;
+}
+
+.nav-right {
+    justify-self: end;
+}
+
+/* =========================
+   LOGO
+========================= */
+.nav-logo {
+    justify-self: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: var(--gray-dark);
+    text-decoration: none;
+    transition: var(--transition);
+    line-height: 1;
+}
+
+.nav-logo:hover {
+    color: var(--gold);
+}
+
+/* =========================
+   LINKS
+========================= */
+.nav-link {
+    text-decoration: none;
+    color: var(--gray-dark);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    position: relative;
+    transition: var(--transition);
+    padding: 8px 0;
+}
+
+.nav-link:hover {
+    color: var(--gold);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--gold);
+    transition: var(--transition);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* =========================
+   DROPDOWN
+========================= */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: var(--transition);
+    z-index: 100;
+}
+
+.dropdown:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: var(--gray-medium);
+    font-size: 0.85rem;
+    border-bottom: 1px solid #f5f5f5;
+    transition: var(--transition);
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #fcf8f0;
+    color: var(--gold);
+}
+
+/* =========================
+   CART
+========================= */
+.nav-cart {
+    font-size: 1.2rem;
+    color: var(--gray-dark);
+    position: relative;
+    cursor: pointer;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 18px;
+    height: 18px;
+    background-color: var(--gold);
+    color: var(--white);
+    font-size: 0.7rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =========================
+   MOBILE
+========================= */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--gray-dark);
+    cursor: pointer;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1200px) {
+    .nav-link {
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .nav-link {
+        font-size: 0.75rem;
+    }
+
+    .btn {
+        padding: 12px 24px;
+        font-size: 0.85rem;
+    }
+}
+
+        
+        /* Hero Section */
+        .hero {
+            padding-top: 140px;
+            padding-bottom: 100px;
+            background: linear-gradient(135deg, #fef9f3 0%, #fbf2e6 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(201, 180, 88, 0.1) 0%, rgba(201, 180, 88, 0) 70%);
+            z-index: 1;
+        }
+        
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-content {
+            flex: 1;
+            max-width: 550px;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-title span {
+            color: var(--gold);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-medium);
+            margin-bottom: 40px;
+        }
+        
+        .calculator-card {
+            background-color: var(--white);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .calculator-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .calculator-subtitle {
+            color: var(--gray-medium);
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--gray-dark);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(201, 180, 88, 0.1);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .btn-calculate {
+            width: 100%;
+            padding: 16px;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+        
+        .privacy-note {
+            text-align: center;
+            color: var(--gray-light);
+            font-size: 0.85rem;
+            margin-top: 15px;
+        }
+        
+        .sacred-geometry {
+            flex: 1;
+            max-width: 500px;
+            position: relative;
+            height: 500px;
+        }
+        
+        .geometry-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+        }
+        
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(201, 180, 88, 0.2);
+        }
+        
+        .circle-1 {
+            width: 100%;
+            height: 100%;
+            animation: rotate 60s linear infinite;
+        }
+        
+        .circle-2 {
+            width: 70%;
+            height: 70%;
+            top: 15%;
+            left: 15%;
+            border-color: rgba(201, 180, 88, 0.3);
+            animation: rotate 40s linear infinite reverse;
+        }
+        
+        .circle-3 {
+            width: 40%;
+            height: 40%;
+            top: 30%;
+            left: 30%;
+            border-color: rgba(201, 180, 88, 0.4);
+        }
+        
+        .number-point {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--gold);
+        }
+        
+        .center-flower {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+        }
+        
+        .flower-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(201, 180, 88, 0.5);
+        }
+        
+        .flower-circle-1 {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .flower-circle-2 {
+            width: 70%;
+            height: 70%;
+            top: 15%;
+            left: 15%;
+        }
+        
+        .flower-circle-3 {
+            width: 40%;
+            height: 40%;
+            top: 30%;
+            left: 30%;
+        }
+        
+        .center-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 15px;
+            height: 15px;
+            background-color: var(--gold);
+            border-radius: 50%;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Life Path Numbers Section */
+        .life-path-section {
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray-medium);
+            max-width: 600px;
+            margin: 0 auto 50px;
+        }
+        
+        .life-path-container {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .numerology-wheel {
+            flex: 1;
+            position: relative;
+            height: 500px;
+        }
+        
+        .wheel-visual {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .wheel-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(201, 180, 88, 0.2);
+        }
+        
+        .wheel-outer {
+            width: 100%;
+            height: 100%;
+            animation: rotate 80s linear infinite;
+        }
+        
+        .wheel-middle {
+            width: 70%;
+            height: 70%;
+            top: 15%;
+            left: 15%;
+            border-color: rgba(201, 180, 88, 0.3);
+        }
+        
+        .wheel-inner {
+            width: 40%;
+            height: 40%;
+            top: 30%;
+            left: 30%;
+            border-color: rgba(201, 180, 88, 0.4);
+        }
+        
+        .wheel-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 20px rgba(201, 180, 88, 0.3);
+        }
+        
+        .numbers-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .number-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 2px solid transparent;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .number-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .number-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #fcf8f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .number-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .number-description {
+            color: var(--gray-medium);
+            font-size: 0.95rem;
+        }
+        
+        /* Master Numbers Section */
+        .master-numbers-section {
+            background: linear-gradient(135deg, #fef9f3 0%, #fbf2e6 100%);
+        }
+        
+        .master-container {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .master-content {
+            flex: 1;
+        }
+        
+        .master-visual {
+            flex: 1;
+            position: relative;
+            height: 500px;
+            background-color: #2a2a2a;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .master-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(201, 180, 88, 0.1) 0%, transparent 70%);
+        }
+        
+        .master-number {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--gold);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .master-11 {
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #4a1e6e, #6b2d9a);
+        }
+        
+        .master-22 {
+            top: 50%;
+            right: 10%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #a68e36, #c9b458);
+        }
+        
+        .master-33 {
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #1a6e6e, #2d9a9a);
+        }
+        
+        .master-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--gold);
+            border: 2px solid rgba(201, 180, 88, 0.3);
+        }
+        
+        .master-description {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .master-list {
+            margin-bottom: 40px;
+        }
+        
+        .master-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .master-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .master-item-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #fcf8f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+        
+        .master-item-content {
+            flex: 1;
+        }
+        
+        .master-item-title {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .master-item-desc {
+            color: var(--gray-medium);
+            font-size: 0.95rem;
+        }
+        
+        /* Core Numbers Section */
+        .core-numbers-section {
+            background-color: var(--white);
+        }
+        
+        .core-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .core-card {
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            border-radius: 16px;
+            padding: 40px 30px;
+            color: var(--white);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .core-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .core-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(201, 180, 88, 0.1), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .core-card:hover::before {
+            opacity: 1;
+        }
+        
+        .core-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .core-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--gold);
+        }
+        
+        .core-subtitle {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+        }
+        
+        .core-description {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .core-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .calculator-container {
+            background-color: var(--white);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            padding: 50px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .calculator-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .name-inputs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        /* Expert Profile Section */
+        .expert-section {
+            background: linear-gradient(135deg, #fef9f3 0%, #fbf2e6 100%);
+        }
+        
+        .expert-container {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .expert-image {
+            flex: 1;
+            position: relative;
+            height: 500px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .expert-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .expert-content {
+            flex: 1;
+        }
+        
+        .expert-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .expert-description {
+            font-size: 1.1rem;
+            color: var(--gray-medium);
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+        
+        .year-cycle {
+            margin-bottom: 40px;
+        }
+        
+        .cycle-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+        
+        .cycle-numbers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .cycle-number {
+            width: 50px;
+            height: 50px;
+            background-color: #f5f0e6;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .cycle-number.active {
+            background-color: var(--gold);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+        
+        .cycle-label {
+            text-align: center;
+            color: var(--gray-medium);
+            font-size: 0.9rem;
+        }
+        
+        /* Compatibility Section */
+        .compatibility-section {
+            background-color: var(--white);
+        }
+        
+        .compatibility-container {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .compatibility-content {
+            flex: 1;
+        }
+        
+        .compatibility-visual {
+            flex: 1;
+            position: relative;
+            height: 400px;
+            background-color: #2a2a2a;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .hands-illustration {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+        }
+        
+        .hand {
+            position: absolute;
+            width: 120px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(201, 180, 88, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .hand-left {
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .hand-right {
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .energy-orb {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, var(--gold) 0%, rgba(201, 180, 88, 0.3) 70%);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+        
+        .compatibility-types {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .type-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 2px solid transparent;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .type-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .type-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #fcf8f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .type-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .type-description {
+            color: var(--gray-medium);
+            font-size: 0.9rem;
+        }
+        
+        /* Final CTA Section */
+        .final-cta {
+            text-align: center;
+            padding: 100px 0;
+            background: linear-gradient(135deg, #fef9f3 0%, #fbf2e6 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23c9b458' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .final-cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .final-cta-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .final-cta-text {
+            font-size: 1.2rem;
+            color: var(--gray-medium);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+        
+        .trust-icons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .trust-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .trust-icon-circle {
+            width: 60px;
+            height: 60px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .trust-icon-text {
+            font-size: 0.9rem;
+            color: var(--gray-medium);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #2a2a2a;
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-top {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            color: var(--gold);
+        }
+        
+        .footer-tagline {
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .footer-columns {
+            display: grid;
+            grid-template-columns: 2fr repeat(5, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: var(--gold);
+            font-weight: 500;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px 0 0 50px;
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .newsletter-btn {
+            background-color: var(--gold);
+            color: var(--white);
+            border: none;
+            border-radius: 0 50px 50px 0;
+            padding: 0 25px;
+            cursor: pointer;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        
+        .newsletter-btn:hover {
+            background-color: var(--dark-gold);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1100px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .compatibility-types {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-columns {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .nav-left, .nav-right {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-logo {
+                position: static;
+                transform: none;
+            }
+            
+            .navbar-container {
+                justify-content: space-between;
+            }
+            
+            .hero-container {
+                flex-direction: column;
+                gap: 50px;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
+            }
+            
+            .life-path-container, .master-container, .expert-container {
+                flex-direction: column;
+                gap: 50px;
+            }
+            
+            .core-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .compatibility-container {
+                flex-direction: column;
+            }
+            
+            .name-inputs {
+                grid-template-columns: 1fr;
+            }
+            
+            .final-cta-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .numbers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .core-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .compatibility-types {
+                grid-template-columns: 1fr;
+            }
+            
+            .trust-icons {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .footer-columns {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .calculator-card, .calculator-container {
+                padding: 30px 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero {
+                padding-top: 120px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .final-cta {
+                padding: 70px 0;
+            }
+            
+            .final-cta-title {
+                font-size: 2rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container navbar-container">
+            <div class="nav-left">
+                <a href="#" class="nav-link">ZODIAC SIGNS</a>
+                <a href="#" class="nav-link">CHINESE ZODIAC</a>
+                <a href="#" class="nav-link">TAROT</a>
+                <div class="dropdown">
+                    <a href="#" class="nav-link">ASTROLOGY <i class="fas fa-chevron-down" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#">Birth Chart</a>
+                        <a href="#">Planetary Transits</a>
+                        <a href="#">Astrological Houses</a>
+                        <a href="#">Synastry Chart</a>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="#" class="nav-logo">Astrala</a>
+            
+            <div class="nav-right">
+                <div class="dropdown">
+                    <a href="#" class="nav-link">NUMEROLOGY <i class="fas fa-chevron-down" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#">Core Numbers</a>
+                        <a href="#">Destiny Number</a>
+                        <a href="#">Soul Urge Number</a>
+                        <a href="#">Personality Number</a>
+                    </div>
+                </div>
+                <a href="#" class="nav-link">LIFE PATHMUMBER</a>
+                <a href="#" class="nav-link">BLOG</a>
+                <button class="btn btn-outline" style="margin-left: 20px; padding: 10px 20px;">Shop</button>
+                <div class="nav-cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <div class="cart-count">0</div>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Numerology: Find Your <span>Life Path Number</span> and Meaning</h1>
+                <p class="hero-subtitle">Uncover your life's purpose and destiny through the ancient wisdom of numbers. Calculate your core numbers and discover their profound spiritual significance.</p>
+                
+                <div class="calculator-card">
+                    <h2 class="calculator-title">Calculate Your Numbers</h2>
+                    <p class="calculator-subtitle">Enter your birth details to reveal your personal numerology profile</p>
+                    
+                    <form id="numerologyForm">
+                        <div class="form-group">
+                            <label for="name">Your Full Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Enter your full name as on birth certificate" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="birthDate">Date of Birth</label>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <select id="month" class="form-control" required>
+                                        <option value="">Month</option>
+                                        <option value="1">January</option>
+                                        <option value="2">February</option>
+                                        <option value="3">March</option>
+                                        <option value="4">April</option>
+                                        <option value="5">May</option>
+                                        <option value="6">June</option>
+                                        <option value="7">July</option>
+                                        <option value="8">August</option>
+                                        <option value="9">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select id="day" class="form-control" required>
+                                        <option value="">Day</option>
+                                        <!-- Days will be populated by JavaScript -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select id="year" class="form-control" required>
+                                        <option value="">Year</option>
+                                        <!-- Years will be populated by JavaScript -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-calculate">Reveal My Path</button>
+                        <p class="privacy-note">Your information is secure and only used for numerology calculations</p>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="sacred-geometry">
+                <div class="geometry-circle">
+                    <div class="circle circle-1"></div>
+                    <div class="circle circle-2"></div>
+                    <div class="circle circle-3"></div>
+                    
+                    <div class="center-flower">
+                        <div class="flower-circle flower-circle-1"></div>
+                        <div class="flower-circle flower-circle-2"></div>
+                        <div class="flower-circle flower-circle-3"></div>
+                        <div class="center-dot"></div>
+                    </div>
+                    
+                    <!-- Number points -->
+                    <div class="number-point" style="top: 10%; left: 50%; transform: translateX(-50%);">1</div>
+                    <div class="number-point" style="top: 20%; right: 20%;">2</div>
+                    <div class="number-point" style="top: 40%; right: 10%;">3</div>
+                    <div class="number-point" style="bottom: 40%; right: 10%;">4</div>
+                    <div class="number-point" style="bottom: 20%; right: 20%;">5</div>
+                    <div class="number-point" style="bottom: 10%; left: 50%; transform: translateX(-50%);">6</div>
+                    <div class="number-point" style="bottom: 20%; left: 20%;">7</div>
+                    <div class="number-point" style="bottom: 40%; left: 10%;">8</div>
+                    <div class="number-point" style="top: 40%; left: 10%;">9</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Life Path Numbers Section -->
+    <section class="life-path-section" id="lifePathNumbers">
+        <div class="container">
+            <h2 class="section-title">Life Path Numbers</h2>
+            <p class="section-subtitle">Discover the profound meaning behind each Life Path Number and how it shapes your destiny</p>
+            
+            <div class="life-path-container">
+                <div class="numerology-wheel">
+                    <div class="wheel-visual">
+                        <div class="wheel-circle wheel-outer"></div>
+                        <div class="wheel-circle wheel-middle"></div>
+                        <div class="wheel-circle wheel-inner"></div>
+                        <div class="wheel-center">LP</div>
+                        
+                        <!-- Number points on wheel -->
+                        <div class="number-point" style="top: 10%; left: 50%; transform: translateX(-50%); background-color: #e3f2fd; color: #1976d2;">1</div>
+                        <div class="number-point" style="top: 20%; right: 20%; background-color: #f3e5f5; color: #7b1fa2;">2</div>
+                        <div class="number-point" style="top: 40%; right: 10%; background-color: #fff3e0; color: #f57c00;">3</div>
+                        <div class="number-point" style="bottom: 40%; right: 10%; background-color: #e8f5e9; color: #388e3c;">4</div>
+                        <div class="number-point" style="bottom: 20%; right: 20%; background-color: #e0f2f1; color: #00796b;">5</div>
+                        <div class="number-point" style="bottom: 10%; left: 50%; transform: translateX(-50%); background-color: #fce4ec; color: #c2185b;">6</div>
+                        <div class="number-point" style="bottom: 20%; left: 20%; background-color: #e8eaf6; color: #303f9f;">7</div>
+                        <div class="number-point" style="bottom: 40%; left: 10%; background-color: #f5f5f5; color: #616161;">8</div>
+                        <div class="number-point" style="top: 40%; left: 10%; background-color: #ffebee; color: #d32f2f;">9</div>
+                    </div>
+                </div>
+                
+                <div class="numbers-grid">
+                    <div class="number-card">
+                        <div class="number-icon">1</div>
+                        <h3 class="number-title">The Leader</h3>
+                        <p class="number-description">Independent, ambitious, pioneering spirit</p>
+                    </div>
+                    <div class="number-card">
+                        <div class="number-icon">2</div>
+                        <h3 class="number-title">The Diplomat</h3>
+                        <p class="number-description">Cooperative, intuitive, peacemaker</p>
+                    </div>
+                    <div class="number-card">
+                        <div class="number-icon">3</div>
+                        <h3 class="number-title">The Creator</h3>
+                        <p class="number-description">Expressive, creative, joyful communicator</p>
+                    </div>
+                    <div class="number-card">
+                        <div class="number-icon">4</div>
+                        <h3 class="number-title">The Builder</h3>
+                        <p class="number-description">Practical, disciplined, foundation-setter</p>
+                    </div>
+                    <div class="number-card">
+                        <div class="number-icon">5</div>
+                        <h3 class="number-title">The Adventurer</h3>
+                        <p class="number-description">Dynamic, freedom-loving, change agent</p>
+                    </div>
+                    <div class="number-card">
+                        <div class="number-icon">6</div>
+                        <h3 class="number-title">The Nurturer</h3>
+                        <p class="number-description">Responsible, caring, harmonious</p>
+                    </div>
+                    <div class="number-card">
+                        <div class="number-icon">7</div>
+                        <h3 class="number-title">The Seeker</h3>
+                        <p class="number-description">Analytical, spiritual, truth-seeker</p>
+                    </div>
+                    <div class="number-card">
+                        <div class="number-icon">8</div>
+                        <h3 class="number-title">The Achiever</h3>
+                        <p class="number-description">Powerful, successful, abundance-minded</p>
+                    </div>
+                    <div class="number-card">
+                        <div class="number-icon">9</div>
+                        <h3 class="number-title">The Humanitarian</h3>
+                        <p class="number-description">Compassionate, wise, universal love</p>
+                    </div>
+                    <div class="number-card">
+                        <div class="number-icon">11</div>
+                        <h3 class="number-title">The Intuitive Master</h3>
+                        <p class="number-description">Spiritual messenger, inspirational</p>
+                    </div>
+                    <div class="number-card">
+                        <div class="number-icon">22</div>
+                        <h3 class="number-title">The Master Builder</h3>
+                        <p class="number-description">Practical visionary, manifestor</p>
+                    </div>
+                    <div class="number-card">
+                        <div class="number-icon">33</div>
+                        <h3 class="number-title">The Master Teacher</h3>
+                        <p class="number-description">Enlightened guide, healing energy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Master Numbers Section -->
+    <section class="master-numbers-section" id="masterNumbers">
+        <div class="container">
+            <h2 class="section-title">Master Numbers: Numerology Meaning of 11, 22, and 33</h2>
+            <p class="section-subtitle">These powerful numbers carry heightened spiritual vibration and greater cosmic responsibility</p>
+            
+            <div class="master-container">
+                <div class="master-content">
+                    <p class="master-description">Master Numbers are the most spiritually evolved numbers in numerology. They carry double the vibrational frequency of their root numbers, offering extraordinary potential and greater karmic responsibility.</p>
+                    
+                    <div class="master-list">
+                        <div class="master-item">
+                            <div class="master-item-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="master-item-content">
+                                <h4 class="master-item-title">Number 11: The Intuitive Master</h4>
+                                <p class="master-item-desc">Spiritual messenger, inspirational, illumination</p>
+                            </div>
+                        </div>
+                        <div class="master-item">
+                            <div class="master-item-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div class="master-item-content">
+                                <h4 class="master-item-title">Number 22: The Master Builder</h4>
+                                <p class="master-item-desc">Practical visionary, manifestor, cosmic architect</p>
+                            </div>
+                        </div>
+                        <div class="master-item">
+                            <div class="master-item-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="master-item-content">
+                                <h4 class="master-item-title">Number 33: The Master Teacher</h4>
+                                <p class="master-item-desc">Enlightened guide, healing energy, universal love</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn">Read More About Master Numbers</button>
+                </div>
+                
+                <div class="master-visual">
+                    <div class="master-number master-11">11</div>
+                    <div class="master-number master-22">22</div>
+                    <div class="master-number master-33">33</div>
+                    <div class="master-center">
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Numbers Section -->
+    <section class="core-numbers-section" id="coreNumbers">
+        <div class="container">
+            <h2 class="section-title">Core Numbers in Numerology</h2>
+            <p class="section-subtitle">Discover the three pillars of your numerological profile that reveal your complete cosmic blueprint</p>
+            
+            <div class="core-cards">
+                <div class="core-card">
+                    <div class="core-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="core-title">Destiny Number</h3>
+                    <p class="core-subtitle">Expression / Life Purpose</p>
+                    <p class="core-description">Your Destiny Number reveals your life's purpose, natural talents, and the ultimate goal you're striving toward in this lifetime.</p>
+                    <div class="core-footer">Calculated from your name</div>
+                </div>
+                
+                <div class="core-card">
+                    <div class="core-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="core-title">Soul Urge Number</h3>
+                    <p class="core-subtitle">Heart's Desire / Inner Self</p>
+                    <p class="core-description">This number reveals your innermost desires, secret yearnings, and what truly motivates you at the soul level.</p>
+                    <div class="core-footer">Calculated from vowels in your name</div>
+                </div>
+                
+                <div class="core-card">
+                    <div class="core-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="core-title">Personality Number</h3>
+                    <p class="core-subtitle">Outer Persona / First Impressions</p>
+                    <p class="core-description">This number represents how others perceive you, your outer personality, and the impression you make on the world.</p>
+                    <div class="core-footer">Calculated from consonants in your name</div>
+                </div>
+            </div>
+            
+            <div class="calculator-container">
+                <div class="calculator-header">
+                    <h3>Calculate Your Core Numbers</h3>
+                    <p>Enter your full birth name to reveal your Destiny, Soul Urge, and Personality Numbers</p>
+                </div>
+                
+                <form id="coreNumbersForm">
+                    <div class="name-inputs">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" class="form-control" placeholder="Your given name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="middleName">Middle Name</label>
+                            <input type="text" id="middleName" class="form-control" placeholder="(Optional)">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" class="form-control" placeholder="Your family name" required>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%;">Calculate My Core Numbers</button>
+                    <p class="privacy-note">Your name is used solely for numerology calculations and is never stored</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expert Profile Section -->
+    <section class="expert-section" id="expertProfile">
+        <div class="container expert-container">
+            <div class="expert-image">
+                <!-- Placeholder for expert image -->
+                <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #f5e6ca, #e8d4b2); display: flex; align-items: center; justify-content: center;">
+                    <div style="text-align: center; color: #a68e36;">
+                        <i class="fas fa-user" style="font-size: 5rem; margin-bottom: 20px;"></i>
+                        <h3 style="font-size: 1.5rem; font-family: 'Playfair Display', serif;">Numerology Expert</h3>
+                        <p>Spiritual Guide & Teacher</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="expert-content">
+                <h2 class="expert-title">Personal Year</h2>
+                <p class="expert-description">Your Personal Year number reveals the theme, opportunities, and challenges you'll encounter in the current calendar year. It's calculated by adding your birth month and day to the current year, then reducing to a single digit (1-9) or master number (11, 22, 33).</p>
+                <p class="expert-description">This cyclical energy influences your experiences and helps you align with the universe's natural rhythms. Understanding your Personal Year allows you to navigate life transitions with greater awareness and purpose.</p>
+                
+                <div class="year-cycle">
+                    <h4 class="cycle-title">Current 9-Year Cycle Phases:</h4>
+                    <div class="cycle-numbers">
+                        <div class="cycle-number">1</div>
+                        <div class="cycle-number">2</div>
+                        <div class="cycle-number">3</div>
+                        <div class="cycle-number">4</div>
+                        <div class="cycle-number active">5</div>
+                        <div class="cycle-number">6</div>
+                        <div class="cycle-number">7</div>
+                        <div class="cycle-number">8</div>
+                        <div class="cycle-number">9</div>
+                    </div>
+                    <p class="cycle-label">Year 5: Change & Freedom • You are here</p>
+                </div>
+                
+                <button class="btn">Calculate Your Personal Year</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compatibility Section -->
+    <section class="compatibility-section" id="compatibility">
+        <div class="container">
+            <h2 class="section-title">Compatibility</h2>
+            <p class="section-subtitle">Discover how numerology reveals the energetic harmony between individuals</p>
+            
+            <div class="compatibility-container">
+                <div class="compatibility-content">
+                    <h3>Numerology Compatibility Explained</h3>
+                    <p>Numerology compatibility goes beyond simple personality matching. It reveals how the core vibrational energies of two individuals interact, complement, and challenge each other.</p>
+                    <p>By comparing Life Path Numbers, Expression Numbers, Soul Urge Numbers, and Personality Numbers, we can understand the deeper dynamics of any relationship - romantic, friendship, or professional.</p>
+                    <p>Compatible numbers create harmony and mutual growth, while challenging combinations offer opportunities for learning and evolution.</p>
+                </div>
+                
+                <div class="compatibility-visual">
+                    <div class="hands-illustration">
+                        <div class="hand hand-left"></div>
+                        <div class="energy-orb"></div>
+                        <div class="hand hand-right"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 style="text-align: center; margin-bottom: 40px;">Types of Numerology Compatibility</h3>
+            
+            <div class="compatibility-types">
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h4 class="type-title">Life Path Compatibility</h4>
+                    <p class="type-description">How your core life purposes align and complement each other</p>
+                </div>
+                
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h4 class="type-title">Expression Number Harmony</h4>
+                    <p class="type-description">How your natural talents and abilities work together</p>
+                </div>
+                
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h4 class="type-title">Soul Urge Connection</h4>
+                    <p class="type-description">How your innermost desires and motivations align</p>
+                </div>
+                
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4 class="type-title">Personality Resonance</h4>
+                    <p class="type-description">How your outer personas and social interactions mesh</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 60px;">
+                <button class="btn">Check Compatibility</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="container final-cta-content">
+            <h2 class="final-cta-title">Discover Your True Numbers Today</h2>
+            <p class="final-cta-text">Your numbers hold the key to understanding your life's purpose, relationships, and spiritual journey. Unlock the ancient wisdom that has guided souls for millennia.</p>
+            
+            <button class="btn btn-outline" style="font-size: 1.1rem; padding: 16px 40px;">Begin Your Numerology Journey</button>
+            
+            <div class="trust-icons">
+                <div class="trust-icon">
+                    <div class="trust-icon-circle">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <span class="trust-icon-text">Personalized Analysis</span>
+                </div>
+                
+                <div class="trust-icon">
+                    <div class="trust-icon-circle">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <span class="trust-icon-text">Secure & Confidential</span>
+                </div>
+                
+                <div class="trust-icon">
+                    <div class="trust-icon-circle">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <span class="trust-icon-text">Instant Results</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-logo">Astrala – Numerology</div>
+                <p class="footer-tagline">Ancient wisdom for modern seekers. Discover your path through the sacred language of numbers.</p>
+            </div>
+            
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>Stay Connected</h3>
+                    <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">Receive monthly insights and cosmic guidance</p>
+                    <div class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Your email address">
+                        <button class="newsletter-btn">Subscribe</button>
+                    </div>
+                </div>
+                
+                <div class="footer-column margin">
+                    <h3>Astrology</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Birth Chart</a></li>
+                        <li><a href="#">Planetary Transits</a></li>
+                        <li><a href="#">Astrological Houses</a></li>
+                        <li><a href="#">Synastry Chart</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column  marginleft>
+                    <h3>Numerology</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Life Path Number</a></li>
+                        <li><a href="#">Destiny Number</a></li>
+                        <li><a href="#">Soul Urge Number</a></li>
+                        <li><a href="#">Personal Year</a></li>
+                        <li><a href="#">Master Numbers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Zodiac</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Zodiac Signs</a></li>
+                        <li><a href="#">Chinese Zodiac</a></li>
+                        <li><a href="#">Compatibility</a></li>
+                        <li><a href="#">Daily Horoscope</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Tarot</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Tarot Readings</a></li>
+                        <li><a href="#">Card Meanings</a></li>
+                        <li><a href="#">Daily Draw</a></li>
+                        <li><a href="#">Tarot Spreads</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Blog</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Spiritual Growth</a></li>
+                        <li><a href="#">Numerology Guide</a></li>
+                        <li><a href="#">Monthly Forecast</a></li>
+                        <li><a href="#">Meditation Tips</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Astrala Numerology. All rights reserved. | Privacy Policy | Terms of Service | Cookie Policy | Contact Us</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sticky Navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Populate day dropdown
+        const daySelect = document.getElementById('day');
+        for (let i = 1; i <= 31; i++) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = i;
+            daySelect.appendChild(option);
+        }
+
+        // Populate year dropdown (last 100 years)
+        const yearSelect = document.getElementById('year');
+        const currentYear = new Date().getFullYear();
+        for (let i = currentYear; i >= currentYear - 100; i--) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = i;
+            yearSelect.appendChild(option);
+        }
+
+        // Form submission
+        document.getElementById('numerologyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Calculating your Life Path Number... This would connect to a numerology calculator in a real application.');
+        });
+
+        document.getElementById('coreNumbersForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Calculating your Core Numbers... This would connect to a numerology calculator in a real application.');
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const navLeft = document.querySelector('.nav-left');
+            const navRight = document.querySelector('.nav-right');
+            
+            if (navLeft.style.display === 'flex') {
+                navLeft.style.display = 'none';
+                navRight.style.display = 'none';
+                this.innerHTML = '<i class="fas fa-bars"></i>';
+            } else {
+                navLeft.style.display = 'flex';
+                navRight.style.display = 'flex';
+                this.innerHTML = '<i class="fas fa-times"></i>';
+                
+                // Adjust for mobile view
+                navLeft.style.flexDirection = 'column';
+                navRight.style.flexDirection = 'column';
+                navLeft.style.position = 'absolute';
+                navRight.style.position = 'absolute';
+                navLeft.style.top = '100%';
+                navRight.style.top = '100%';
+                navLeft.style.left = '0';
+                navRight.style.right = '0';
+                navLeft.style.backgroundColor = 'white';
+                navRight.style.backgroundColor = 'white';
+                navLeft.style.width = '100%';
+                navRight.style.width = '100%';
+                navLeft.style.padding = '20px';
+                navRight.style.padding = '20px';
+                navLeft.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+                navRight.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Number card hover effect enhancement
+        const numberCards = document.querySelectorAll('.number-card, .type-card');
+        numberCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Core card hover effect
+        const coreCards = document.querySelectorAll('.core-card');
+        coreCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-12px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
